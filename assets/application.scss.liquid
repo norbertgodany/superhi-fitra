@@ -1,0 +1,60 @@
+// put your styles here
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap");
+
+$main-font: "Rubik", Arial, Helvetica, sans-serif;
+
+$color-accent: #ff3700;
+$white: #ffffff;
+$black: #000000;
+$color-text: #555555;
+
+$line-global: 20px;
+$gutter-global: $line-global * 2;
+
+// Base
+
+* {
+  font-family: $main-font;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: $black;
+  line-height: $line-global;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+// Utility classes
+
+.grid {
+  display: grid;
+  grid-column-gap: $gutter-global;
+  grid-row-gap: $gutter-global;
+}
+
+.two-columns {
+  grid-template-columns: 1fr 1fr;
+}
+
+.main-content {
+  min-height: 100vh;
+  padding: $gutter-global;
+}
+
+// index styles
+.page-index {
+}

@@ -22,9 +22,9 @@
         {% if template != 'cart' %}
             <a class="link-to-cart" href="/cart">
                 {% if cart.item_count > 0 %}
-                    {{ "cart.button.filled" | t }}
+                    {{ 'cart.button.filled' | t }}
                 {% else %}
-                    {{ "cart.button.empty" | t }}
+                    {{ 'cart.button.empty' | t }}
                 {% endif %}
             </a>
         {% else %}

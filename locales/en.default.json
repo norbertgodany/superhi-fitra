@@ -7,7 +7,7 @@
   },
   "product": {
     "copy": {
-      "headline": "Hassle free fitness tracking",
+      "headline": "Hassle free fitness tracking.",
       "description_headline": "Information"
     },
     "details_list": {
@@ -19,10 +19,25 @@
     }
   },
   "cart": {
+    "general": {
+      "title": "Cart",
+      "preorder_info": "All preorders ship free March, 2020.",
+      "support_title": "Any questions?",
+      "support_email": "support@getfitra.com",
+      "checkout": "Checkout",
+      "empty": "Your Cart is empty",
+      "close": "Back to Fitra"
+    },
     "button": {
       "filled": "Your Cart",
       "empty": "Your Cart is empty",
       "close": "Close"
+    },
+    "lines": {
+      "title": "Order Summary",
+      "shipping": "Shipping",
+      "subtotal": "Subtotal",
+      "free": "Free"
     }
   }
 }
