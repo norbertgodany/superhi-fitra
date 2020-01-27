@@ -373,13 +373,39 @@ th {
   padding: $line-global 0;
 }
 
-tr {
+tbody tr {
   border-top: 1px solid $white;
 }
 
 td {
+  position: relative;
   padding: $line-global 0;
 }
 
-.cart-totals {
+td:last-child {
+  text-align: right;
+  vertical-align: top;
+}
+
+.remove-line {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  padding: $line-global $line-global/2;
+  text-align: center;
+  width: $gutter-global;
+}
+
+.remove-text {
+  background: $color-accent;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  padding: $line-global 0 $line-global $line-global;
+}
+
+.remove-line:hover .remove-text {
+  display: block;
 }
