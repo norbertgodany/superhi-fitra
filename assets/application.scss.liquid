@@ -1,7 +1,7 @@
 // put your styles here
 @import url("https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap");
 
-$main-font: "Rubik", Arial, Helvetica, sans-serif;
+$main-font: "Rubik", sans-serif;
 
 $color-accent: #ff3700;
 $white: #ffffff;
@@ -154,8 +154,7 @@ label {
 
 button {
   @include reset-input;
-  border: $standard-border;
-  background: $color-accent;
+  background: $black;
   color: $white;
   font-size: $body-font-size;
   line-height: $line-global;
@@ -226,6 +225,10 @@ button {
   color: $color-text;
 }
 
+.link-to-home {
+  color: $black;
+}
+
 .link-to-cart .cart-item-count {
   display: block;
   font-size: 0px;
@@ -279,6 +282,10 @@ button {
   margin-top: $line-global;
 }
 
+.add-to-cart-button {
+  background: $color-accent;
+}
+
 .add-to-cart-button .product-price {
   float: right;
 }
@@ -303,6 +310,11 @@ button {
 
 .cart a {
   color: inherit;
+}
+
+.cart.cart-filled .cart-content {
+  padding-bottom: $line-global*8;
+  grid-template-rows: auto $line-global*2;
 }
 
 .cart-title {
@@ -357,9 +369,6 @@ button {
   margin-bottom: $line-global;
 }
 
-.cart-lines {
-}
-
 table {
   table-layout: fixed;
   border-collapse: collapse;
@@ -399,6 +408,7 @@ td:last-child {
 
 .remove-text {
   background: $color-accent;
+  color: $black;
   display: none;
   position: absolute;
   top: 0;
@@ -408,4 +418,102 @@ td:last-child {
 
 .remove-line:hover .remove-text {
   display: block;
+}
+
+.cart-form-wrap {
+  grid-row: span 2;
+  position: relative;
+}
+
+.checkout-button {
+  position: absolute;
+  width: 100%;
+  bottom: -($line-global*8);
+  left: 0;
+}
+
+.cart-support p {
+  color: inherit;
+}
+
+.cart-totals {
+  border-bottom: 1px solid $white;
+}
+
+// 404 styles
+
+.content-404 a {
+  display: inline-block;
+  margin-top: $line-global*1;
+  color: $black;
+}
+
+// Responsive styles
+
+.grid > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+@media only screen and (max-width:1023px) {
+
+  $add-to-cart-form-height: 143px;
+
+  .sticky-side-image {
+    position: static;
+    width: 100%;
+    height: 90vw;
+  }
+
+  .main-content {
+    min-height: 0;
+    padding: $line-global;
+    width: 100%;
+    margin: 0 auto;
+    grid-template-rows: auto; 
+  }
+
+  .grid {
+    grid-row-gap: $line-global;
+  }
+
+  .headline {
+    padding-bottom: 0;
+  }
+
+  .headline-big {
+    font-size: 40vw;
+  }
+
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .form-wrapper {
+    height: $add-to-cart-form-height - $line-global; // accounting for grid-row-gap
+  }
+
+  .add-to-cart-form {
+    position: fixed;
+    padding: 0 $line-global;
+    background: $white;
+    height: $add-to-cart-form-height;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .cart-lines td:last-child {
+    right: $line-global;
+  }
+
+  .cart.cart-filled #cart-content {
+    padding-bottom: 0;
+  }
+
+  .checkout-button {
+    position: static;
+    margin-top: $line-global;
+  }
 }

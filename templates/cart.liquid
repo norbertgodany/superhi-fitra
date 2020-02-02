@@ -16,52 +16,65 @@
 
     <div class="cart-content grid two-columns">
       {% if cart.item_count > 0 %}
-        <h2>{{ 'cart.general.preorder_info' | t }}</h2>
-        <form action="/cart" method="post" novalidate>
-          <table class="cart-lines">
-            <thead>
-              <th colspan="2">{{ 'cart.lines.title' | t }}</th>
-            </thead>
-            <tbody>
-              {% for item in cart.items %}
-                <tr>
-                  <td>
-                    {% if item.quantity > 1 %}
-                      {{ item.quantity }}x
-                      {%endif%}
-                      {{ item.product.title }}
-                      &ndash;
-                      {{ item.variant.title }}</td>
-                  </td>
-                  <td>
-                    {{ item.line_price | money }}
-                    <a class="remove-line" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
-                      <span class="remove-text">{{ 'cart.lines.remove' | t }}</span>
-                      <img src="{{ 'icon-x.svg' | asset_url }}" alt="{{ 'cart.lines.remove' | t }}" class="remove-x">
-                    </a>
-                  </td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
 
-          <table class="cart-totals">
-            <tbody>
-              <tr>
-                <td>{{ 'cart.lines.shipping' | t }}</td>
-                <td>{{ 'cart.lines.free' | t }}</td>
-              </tr>
-              <tr>
-                <td>{{ 'cart.lines.subtotal' | t }}</td>
-                <td>{{ cart.total_price | money }}</td>
-              </tr>
-            </tbody>
-          </table>
-          <button name="checkout" type="submit">{{ 'cart.general.checkout' | t }}</button>
-        </form>
-        <p>{{ 'cart.general.support_title' | t }}
-          <a href="mailto:{{ 'cart.general.support_email' | t }}">{{ 'cart.general.support_email' | t }}</a>
-        </p>
+        <div class="valign-bottom">
+          <h2>{{ 'cart.general.preorder_info' | t }}</h2>
+        </div>
+
+        <div class="cart-form-wrap">
+          <form action="/cart" method="post" novalidate>
+
+            <table class="cart-lines">
+              <thead>
+                <th colspan="2">{{ 'cart.lines.title' | t }}</th>
+              </thead>
+
+              <tbody>
+                {% for item in cart.items %}
+                  <tr>
+                    <td>
+                      {% if item.quantity > 1 %}
+                        {{ item.quantity }}
+                        {%endif%}
+                        {{ item.product.title }}
+                        &ndash;
+                        {{ item.variant.title }}</td>
+                    </td>
+                    <td>
+                      {{ item.line_price | money }}
+                      <a class="remove-line" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                        <span class="remove-text">{{ 'cart.lines.remove' | t }}</span>
+                        <img src="{{ 'icon-x.svg' | asset_url }}" alt="{{ 'cart.lines.remove' | t }}" class="remove-x">
+                      </a>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+            <table class="cart-totals">
+              <tbody>
+                <tr>
+                  <td>{{ 'cart.lines.shipping' | t }}</td>
+                  <td>{{ 'cart.lines.free' | t }}</td>
+                </tr>
+                <tr>
+                  <td>{{ 'cart.lines.subtotal' | t }}</td>
+                  <td>{{ cart.total_price | money }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button class="checkout-button" name="checkout" type="submit">{{ 'cart.general.checkout' | t }}</button>
+          </form>
+        </div>
+
+        <div class="cart-support">
+          <p>{{ 'cart.general.support_title' | t }}
+            <a href="mailto:{{ 'cart.general.support_email' | t }}">{{ 'cart.general.support_email' | t }}</a>
+          </p>
+        </div>
+
       {% else %}
         <div class="cart-empty-lines">{{ 'cart.general.empty' | t }}
           {% for i in (1..3) %}
@@ -72,6 +85,7 @@
           <a href="/">{{ 'cart.general.close' | t }}</a>
         </div>
       {% endif %}
+
     </div>
   </div>
 </div>

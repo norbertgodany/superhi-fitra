@@ -1,13 +1,17 @@
 {% assign mainProduct = all_products['fitra-activity-band'] %}
 
 <div class="page-index">
+
   <div class="product-images sticky-side-image">
     {% for image in mainProduct.images %}
-      <div class="single-product-image">
+      <div class="single-product-image"
+        {% if image.attached_to_variant? %}data-variant="{{ image.variants.first.id }}" {% endif %}
+        style="{% if forloop.index > 1 %}display: none;{% endif %}">
         <img src="{{ image || img_url: 'x1440' }}" alt="fitra Fitness Tracking Band"/>
       </div>
     {% endfor %}
   </div>
+
   <div class="product-info main-content grid">
     <div class="valign-center">
       <h1 class="headline-big">{{ mainProduct.title | remove: " Activity Band" }}</h1>
@@ -33,9 +37,10 @@
 
       <div class="form-wrapper">
         <form action="/cart/add" class="add-to-cart-form" enctype="multipart/form-data" method="post">
-          <label for="productSelect">{{ mainProduct.options.first }}</label>
+          <label for="productSelector">{{ mainProduct.options.first }}</label>
+
           <div class="styled-select">
-            <select id="productSelect" name="id">
+            <select name="id" id="variant-id">
               {% for variant in mainProduct.variants %}
                 <option value="{{ variant.id }}">{{ variant.title }}</option>
               {% endfor %}
@@ -44,6 +49,7 @@
               <img src="{{ 'icon-arrow-down.svg' | asset_url }}" alt="">
             </div>
           </div>
+
           <button class="add-to-cart-button" name="add" type="submit">
             {{ "product.form.submit" | t }}
             <span class="product-price">{{ mainProduct.price | money_without_trailing_zeros }}</span>

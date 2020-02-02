@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ page_title }}</title>
+    <title>{{ "general.site.title" | t }}</title>
     <meta charset="utf-8"/>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
     <meta name="description" content="{{ page_description | escape }}"/>
@@ -14,6 +14,7 @@
     {{
       "application.scss.css" | asset_url | stylesheet_tag
     }}
+    <script crossorigin="anonymous" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     {{
       "application.js" | asset_url | script_tag
     }}
@@ -21,7 +22,7 @@
   <body class="template-{{ template }}">
 
     {% if template != 'cart' %}
-      <a href="/cart" class="link-to-cart {% if cart.item_count > 0 %}cart-filled{% endif %}">
+      <a class="link-to-cart {% if cart.item_count > 0 %}cart-filled{% endif %}" href="/cart">
         <span class="cart-text">
           {% if cart.item_count > 0 %}
             {{ 'cart.button.filled' | t }}
@@ -39,7 +40,10 @@
       </a>
     {% endif %}
 
-    <main role="main">
+    {% if template != "cart" and template != "index" %}
+      {% include 'error-404' %}
+    {% endif %}
+    <main role="main" {% if template != "cart" and template != "index" %}style="display: none;"{% endif %}>
       {{ content_for_layout }}
     </main>
   </body>
