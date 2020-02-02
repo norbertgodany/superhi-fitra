@@ -457,7 +457,7 @@ td:last-child {
 
 @media only screen and (max-width:1023px) {
 
-  $add-to-cart-form-height: 143px;
+  $add-to-cart-form-height: 183px;
 
   .sticky-side-image {
     position: static;
@@ -490,12 +490,12 @@ td:last-child {
   }
 
   .form-wrapper {
-    height: $add-to-cart-form-height - $line-global; // accounting for grid-row-gap
+    height: $add-to-cart-form-height - $line-global*4; // accounting for grid-row-gap
   }
 
   .add-to-cart-form {
     position: fixed;
-    padding: 0 $line-global;
+    padding: $line-global;
     background: $white;
     height: $add-to-cart-form-height;
     bottom: 0;
